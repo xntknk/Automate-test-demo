@@ -7,19 +7,32 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-Cypress.Commands.add("LoginAPI", () => 
+Cypress.Commands.add('login', (username, password) => 
 {
-    cy.request("POST", "https://mts-bol-dev.inconstruction.website/login",
+    cy.session([username,password], () =>
     {
-      "userEmail": "admin@bol.com",
-      "userPassword": "0123456789"
-    }).then(function(response)
-    {
-      expect(response.status).to.eq(200)
-      Cypress.env('token',response.body.token);
+        cy.visit('https://mts-bol-dev.inconstruction.website/')
+        cy.get('#email-address').type(username)
+        cy.get('#password').type(password)
+        cy.get('[type="submit"]').click()
+        cy.wait(5000)
     })
-  
-  });
+    
+})
+// Cypress.Commands.add("login", () => 
+// {
+//   cy.request("POST", "https://mts-bol-dev.inconstruction.website/login",
+//   {
+//     "userEmail": "approval1@bol.com",
+//     "userPassword": "0123456789"
+//   }).then(function(response)
+//   {
+//     expect(response.status).to.eq(200)
+//     Cypress.env('token',response.body.token);
+//   })
+
+// });
+
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
