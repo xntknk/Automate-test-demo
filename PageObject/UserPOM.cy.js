@@ -109,8 +109,24 @@ export class user_all {
             }
 
         })
+    }
 
-        cy.get('a').should('have.attr','href').and('include', 'https://mts-bol-dev.inconstruction.website/users/')
+    editRole(type_role, role_name){
+
+        cy.get('#pv_id_12 > .p-dropdown-label').click()
+        cy.get("[role='searchbox']").type(type_role)
+        cy.get(".p-dropdown-items-wrapper").each(($el, index, $list) => 
+            {
+                if($el.text() == role_name) {
+
+                    cy.wrap($el).click()
+
+                }
+            })
+
+    
+
+        
 
     }
 

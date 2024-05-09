@@ -28,15 +28,16 @@ describe('User CRUD', () => {
         user.clickSaveBtn() // Save
         cy.wait(5000)
         user.gotoPage()
+    });
 
-    it('Edit User', () => {
+    it.only('Edit User', () => {
 
         user.gotoPage()
         user.clickEditBtn("Mister Cypress") // Click Edit button
         user.enterFname("MR.") // Edit Fname
         user.enterLname("CP") // Edit last name
         user.enterMobileNo("0") //Edit mobile number
-        user.selectRole('staff','Staff') // Edit role
+        user.editRole('staff','Staff') // Edit role
         user.enterDept('Reporter1') // Department
         user.enterSubDept('Viewer1') // Sub department
         user.enterPosition('Reporter1') // Position
@@ -49,5 +50,5 @@ describe('User CRUD', () => {
 
         
         
-    });
+    
 });
