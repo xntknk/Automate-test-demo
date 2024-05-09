@@ -30,7 +30,7 @@ describe('User CRUD', () => {
         user.gotoPage()
     });
 
-    it.only('Edit User', () => {
+    it('Edit User', () => {
 
         user.gotoPage()
         user.clickEditBtn("Mister Cypress") // Click Edit button
@@ -43,6 +43,20 @@ describe('User CRUD', () => {
         user.enterPosition('Reporter1') // Position
         user.toggleSwitch() // Enable/Disable
         user.clickSaveBtn() // Save
+
+
+    });
+
+    it.only('Delete User', () => {
+
+        user.gotoPage()
+        user.clickDelBtn('mrcypress@email.com') // Click Del button
+        user.cancelDel() // Cancel delete
+        cy.wait(2000)
+        user.clickDelBtn('mrcypress@email.com') // Click Del again
+        user.confiirmDel() // Confirm Delete
+
+
 
 
     })
