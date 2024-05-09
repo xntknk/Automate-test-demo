@@ -130,6 +130,32 @@ export class user_all {
 
     }
 
+    clickDelBtn(email){
+
+        cy.get("tr td:nth-child(5)").each(($el, index, $list) => 
+        {
+
+            if ($el.text() == email) {
+
+                cy.get('[class="icon delete"]').eq(index).click()
+
+            }
+
+        })
+    }
+
+    confiirmDel(){
+
+        cy.get("button span").contains("Delete").click()
+
+    }
+
+    cancelDel(){
+
+        cy.get("button span").contains("Cancel").click()
+
+    }
+
     
 
 
