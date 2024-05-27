@@ -25,6 +25,24 @@ export class user_approval {
 
     }
 
+    selectRole(type_role, role){
+
+        cy.get("[class='p-dropdown-label p-inputtext p-placeholder']").click()
+        cy.get("[role='searchbox']").type(type_role)
+        cy.get('[class="p-dropdown-items-wrapper"]').each(($el, index, list) => 
+        {
+
+            if($el.text() == role) {
+
+                cy.wrap($el).click()
+
+            }
+
+        })
+
+    }
+    
+
 
 
 }
