@@ -1,4 +1,4 @@
-import { product_group } from "../../PageObject/productGroupPOM.cy";
+import { product_group } from "../../../PageObject/productGroupPOM.cy";
 
 const prodGroup = new product_group
 describe('Product group CRUD', () => {
