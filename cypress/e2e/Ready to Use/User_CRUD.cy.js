@@ -1,4 +1,4 @@
-import { user_all } from "../../PageObject/UserPOM.cy";
+import { user_all } from "../../../PageObject/UserPOM.cy";
 
 const user = new user_all 
 describe('User CRUD', () => {

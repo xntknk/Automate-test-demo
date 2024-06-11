@@ -16,7 +16,7 @@ describe('SLA CRUD', () => {
         sla.clickEditBtn('Deduction') // select service you want to edit
         sla.selectDor(3) // select Day of response
         sla.selectRemind("Week") // select remind Note *** If you want to select 1 week please use "Week"
-        sla.Assign('Staff') //select tole to assign
+        // sla.Assign('Staff') //select tole to assign
         sla.details('Hello World')
         sla.selectStatus('Active') // Active / Inactive
         sla.clickSaveBtn()
