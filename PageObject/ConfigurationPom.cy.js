@@ -84,9 +84,9 @@ export class config {
   // Configuration element
 
   // Click Create button
-  createConfigBtn(page) {
+  createConfigBtn() {
     cy.get("button span").contains("Create New").click();
-    cy.get("h1").should("have.text", page);
+    cy.get("h1").should("have.text", "Create");
   }
   // Enter the username
   enterUsername(username) {
@@ -116,15 +116,64 @@ export class config {
       "text"
     );
   }
-  selectPartner(partner){
-    cy.get('[class="p-dropdown-label p-inputtext p-placeholder"]').click()
-    cy.get('.p-dropdown-items').each(($el, index, list) => {
+  selectPartner(partner) {
+    // Open the dropdown
+    cy.get(".p-dropdown-trigger").eq(0).click();
 
-        cy.wrap($el).invoke("text").then((partner) =>{
-            if (partner.includes(partner.toString())){
-                cy.wrap($el).click()
-            }
-        })
-    })
+    // Get all dropdown items
+    cy.get(".p-dropdown-item").each(($el) => {
+      // Check if the text includes the partner
+      cy.wrap($el)
+        .invoke("text")
+        .then((text) => {
+          if (text.includes(partner)) {
+            // Click the item if it matches
+            cy.wrap($el).click();
+          }
+        });
+    });
   }
+
+  selectStatus(status) {
+    // Open the dropdown
+    cy.get(".p-dropdown-trigger").eq(1).click();
+
+    // Get all dropdown items
+    cy.get(".p-dropdown-item").each(($el) => {
+      // Check if the text includes the status
+      cy.wrap($el)
+        .invoke("text")
+        .then((text) => {
+          if (text.includes(status)) {
+            // Click the item if it matches
+            cy.wrap($el).click();
+          }
+        });
+    });
+  }
+  writeDetails(details) {
+    cy.get("#Details").type(details);
+  }
+  checkbox() {
+    cy.get("input[type='checkbox']").as("checkboxes").check();
+    cy.get("@checkboxes").each((checkbox) => {
+      expect(checkbox[0].checked).to.equal(true);
+    });
+  }
+  clickSaveOrCancelBtn(save_cancel, username) {
+    cy.get("button span").contains(save_cancel).click();
+
+    if(save_cancel == 'Save'){
+
+      cy.get("tr td:nth-child(1)").should('contain', username)
+      
+
+    }
+    if(save_cancel == 'Cancel'){
+
+      cy.get("tr td:nth-child(1)").should('not.contain', username)
+
+    }
+  }
+
 }

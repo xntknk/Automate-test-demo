@@ -1,7 +1,7 @@
 // HOLD!!!!!!!!!!!!!!!!!!!
 
 
-import { user_approval } from "../../PageObject/(Hold)UserApprovalPOM.cy";
+import { user_approval } from "../../../PageObject/(Hold)UserApprovalPOM.cy";
 
 const approve = new user_approval
 

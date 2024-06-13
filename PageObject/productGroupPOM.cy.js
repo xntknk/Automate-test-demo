@@ -1,9 +1,9 @@
 export class product_group {
 
 
-    gotoPage() {
+    gotoPage(url) {
 
-        cy.visit('https://mts-bol-dev.inconstruction.website/product-group')
+        cy.visit(url)
         cy.wait(3000)
 
     }
@@ -13,8 +13,9 @@ export class product_group {
         cy.get('H4').should('be.visible')
     }
 
-    typeGroupName(group_name){
-        cy.get('input[id="Group Name"]').type(group_name)
+    typeGroupName(eng_name,lao_name){
+        cy.get('input[id="Group Name"]').type(eng_name)
+        cy.get('[id="Group Name Lao"]').type(lao_name)
     }
     
     selectProduct(type_name, product_name){

@@ -1,4 +1,4 @@
-import { user_all } from "../../../PageObject/UserPOM.cy";
+import { user_all } from "../../PageObject/UserPOM.cy";
 
 const user = new user_all 
 describe('User CRUD', () => {
@@ -20,14 +20,14 @@ describe('User CRUD', () => {
         user.enterLname("Cypress")  // Lastname
         user.enterMobileNo("0123456789") // Mobile Number
         user.enterEmail("mrcypress@email.com") // Email
-        user.selectRole("view","Viewer") // Select role
+        user.selectRole("Staff") // Select role
         user.enterDept('Reporter') // Department
         user.enterSubDept('Viewer') // Sub department
         user.enterPosition('Reporter') // Position
         // user.toggleSwitch() //toggle enable/disable optional
         user.clickSaveBtn() // Save
-        cy.wait(5000)
-        user.gotoPage()
+        cy.wait(2000)
+        
     });
 
     it('Edit User', () => {
@@ -37,7 +37,7 @@ describe('User CRUD', () => {
         user.enterFname("MR.") // Edit Fname
         user.enterLname("CP") // Edit last name
         user.enterMobileNo("0") //Edit mobile number
-        user.editRole('staff','Staff') // Edit role
+        user.editRole('Staff') // Edit role
         user.enterDept('Reporter1') // Department
         user.enterSubDept('Viewer1') // Sub department
         user.enterPosition('Reporter1') // Position
@@ -47,7 +47,7 @@ describe('User CRUD', () => {
 
     });
 
-    it.only('Delete User', () => {
+    it('Delete User', () => {
 
         user.gotoPage()
         user.clickDelBtn('mrcypress@email.com') // Click Del button

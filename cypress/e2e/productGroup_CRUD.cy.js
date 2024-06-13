@@ -1,6 +1,7 @@
-import { product_group } from "../../../PageObject/productGroupPOM.cy";
+import { product_group } from "../../PageObject/productGroupPOM.cy";
 
 const prodGroup = new product_group
+const url = 'https://mts-bol-dev.inconstruction.website/product-management/group'
 describe('Product group CRUD', () => {
     beforeEach(() => {
         cy.viewport(1920, 1080)
@@ -9,9 +10,9 @@ describe('Product group CRUD', () => {
 
     it('Create New Group', () => {
         
-        prodGroup.gotoPage() //visit product group page
+        prodGroup.gotoPage(url) //visit product group page
         prodGroup.clickCreateBtn() //Click Create New button
-        prodGroup.typeGroupName("Create by Cypress") //Input Group Name
+        prodGroup.typeGroupName("Create by Cypress","Create by Cypress(Lao)") //Input Group Name
         prodGroup.selectProduct("IT", "IT devices") //Select Product
         prodGroup.selectProductType("Lap", "Laptops") //Select Product Type
         prodGroup.submitBtn() //Submit
@@ -19,14 +20,14 @@ describe('Product group CRUD', () => {
     });
     it('Edit the product group', () => {
 
-        prodGroup.gotoPage() //visit product group page
+        prodGroup.gotoPage(url) //visit product group page
         prodGroup.clickEditBtn("Create by Cypress") // Click edit button
         prodGroup.addItem("IT", "IT devices", "mou", "Mouses")// Add more Item 
 
     });
     it('Delete', () => {
 
-        prodGroup.gotoPage()
+        prodGroup.gotoPage(url)
         prodGroup.delItem("Create by Cypress")// Delete the item in group
         prodGroup.delGroup("Create by Cypress")// Delete group
         

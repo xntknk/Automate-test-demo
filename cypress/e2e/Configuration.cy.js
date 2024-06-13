@@ -1,7 +1,8 @@
 import { config } from "../../PageObject/ConfigurationPom.cy";
 
 const cfg = new config
-
+const partnerUrl = 'https://mts-bol-dev.inconstruction.website/setting/configurations/partner'
+const configUrl = 'https://mts-bol-dev.inconstruction.website/setting/configurations/'
 describe('Configuration & Partner Test', () => {
     beforeEach(() => {
         cy.viewport(1920, 1080)
@@ -9,7 +10,7 @@ describe('Configuration & Partner Test', () => {
     });
     
     it('(Partner) Create the partner', () => {
-        cfg.gotoPage('https://mts-bol-dev.inconstruction.website/setting/configurations/partner')
+        cfg.gotoPage(partnerUrl)
         cfg.createPartnerBtn();
         cfg.clickSubmit();
         cfg.checkReq();
@@ -20,13 +21,13 @@ describe('Configuration & Partner Test', () => {
 
         });
     it('(Partner) Test Search', () => {
-            cfg.gotoPage('https://mts-bol-dev.inconstruction.website/setting/configurations/partner')
+            cfg.gotoPage(partnerUrl)
             cy.wait(5000)
             cfg.searchKeyword('Cypr')
         });
 
     it('(Partner) Edit the partner', () => {
-        cfg.gotoPage('https://mts-bol-dev.inconstruction.website/setting/configurations/partner')
+        cfg.gotoPage(partnerUrl)
         cy.wait(5000)
         cfg.clickEditBtn('Cypress');
         cfg.clearfield()
@@ -36,7 +37,7 @@ describe('Configuration & Partner Test', () => {
         
     });
     it('(Partner) Delete the partner', () => {
-        cfg.gotoPage('https://mts-bol-dev.inconstruction.website/setting/configurations/partner')
+        cfg.gotoPage(partnerUrl)
         cy.wait(5000)
         cfg.clickDelBtn('Cypress')
         cfg.confirmDel()
@@ -44,12 +45,22 @@ describe('Configuration & Partner Test', () => {
     });
 
     it.only('(Config) Create', () => {
-        cfg.gotoPage('https://mts-bol-dev.inconstruction.website/setting/configurations/')
-        cfg.createConfigBtn('Create')
-        cfg.enterUsername('Mr.Cypress')
-        cfg.passwordGen('123')
+        const username = 'Mr.Cypress'
+        const button = 'Cancel'
+        const pwd = '123456789'
+        const partner = 'OSC_tester'
+        const user_status = 'Inactive'
+        const detail = 'Hello World'
+
+        cfg.gotoPage(configUrl)
+        cfg.createConfigBtn()
+        cfg.enterUsername(username)
+        cfg.passwordGen(pwd)
         cfg.eyeIcon();
-        cfg.selectPartner('OSC')
-        
+        cfg.selectPartner(partner)
+        cfg.selectStatus(user_status)
+        cfg.writeDetails(detail)
+        cfg.checkbox()
+        cfg.clickSaveOrCancelBtn(button, username)
     });
     });

@@ -51,24 +51,31 @@ export class SLA {
       });
 
   }
-  Assign(role){
+  Assign(){
     cy.get('.p-multiselect-label-container').click()
-    cy.get('[class="p-multiselect-panel p-component"]').each(($el,index) => {
-        const text = $el.text();
-        
-      if (text.includes(role)) {
-        cy.log(role)
-        cy.get('[role="listbox"]').eq(index).click();
-      }
-      
-      });
-      cy.get('.p-multiselect-label-container').click()
+    
+      cy.get("input[type='checkbox']").then(($checkbox) => {
 
+        if ($checkbox.is(':checked')) {
+          // If it is checked, uncheck it
+          cy.get('input[type="checkbox"]').uncheck();
+      } else {
+          // If it is unchecked, check it
+          cy.get('input[type="checkbox"]').check();
+      }
+
+      });
+     
+      
+      // cy.get("@checkboxes").each((checkbox) => {
+      //   expect(checkbox[0].checked).to.equal(true);
+      // });
   }
   details(detail){
     cy.get('textarea').type(detail)
 
   }
+
   selectStatus(status){
     cy.get('.p-dropdown-trigger').eq(3).click()
     cy.get('.p-dropdown-item').each(($el) => {
