@@ -52,17 +52,19 @@ export class user_all {
 
     }
 
-    selectRole(type_role, role_name){
+    selectRole(role_name){
 
         cy.get("[class='p-dropdown-label p-inputtext p-placeholder']").click()
-        cy.get("[role='searchbox']").type(type_role)
-        cy.get(".p-dropdown-items-wrapper").each(($el, index, $list) => 
+        // cy.get("[role='searchbox']").type(type_role)
+        cy.get(".p-dropdown-items").each(($el, index, $list) => 
             {
-                if($el.text() == role_name) {
+                cy.wrap($el).invoke("text").then((text) => {
+                    if (text.includes(role_name)){
 
-                    cy.wrap($el).click()
-
-                }
+                        cy.wrap($el).click();
+                    }
+                })
+               
             })
 
     }
@@ -111,17 +113,19 @@ export class user_all {
         })
     }
 
-    editRole(type_role, role_name){
+    editRole(role_name){
 
         cy.get('#pv_id_12 > .p-dropdown-label').click()
-        cy.get("[role='searchbox']").type(type_role)
-        cy.get(".p-dropdown-items-wrapper").each(($el, index, $list) => 
+        
+        cy.get(".p-dropdown-items").each(($el, index, $list) => 
             {
-                if($el.text() == role_name) {
+                cy.wrap($el).invoke("text").then((text) => {
+                    if (text.includes(role_name)){
 
-                    cy.wrap($el).click()
-
-                }
+                        cy.wrap($el).click();
+                    }
+                })
+               
             })
 
     
