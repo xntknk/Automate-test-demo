@@ -134,7 +134,7 @@ export class config {
     });
   }
 
-  selectStatus(status) {
+  selectUserStatus(status) {
     // Open the dropdown
     cy.get(".p-dropdown-trigger").eq(1).click();
 
