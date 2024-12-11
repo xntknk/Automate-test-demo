@@ -18,7 +18,7 @@ describe('User CRUD', () => {
         //Enter Info
         user.enterFname("Mister") // Firstname
         user.enterLname("Cypress")  // Lastname
-        user.enterMobileNo("0123456789") // Mobile Number
+        user.enterMobileNo("201523456778") // Mobile Number
         user.enterEmail("mrcypress@email.com") // Email
         user.selectRole("Staff") // Select role
         user.enterDept('Reporter') // Department
