@@ -1,4 +1,4 @@
-import { config } from "../../PageObject/ConfigurationPom.cy";
+import { config } from "../PageObject/ConfigurationPom.cy";
 
 const cfg = new config
 const partnerUrl = 'https://mts-bol-dev.inconstruction.website/setting/configurations/partner'
