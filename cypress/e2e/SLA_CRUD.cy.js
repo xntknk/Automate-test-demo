@@ -1,4 +1,4 @@
-import { SLA } from "../../PageObject/SLA_POM.cy";
+import { SLA } from "../PageObject/SLA_POM.cy";
 
 const sla = new SLA
 

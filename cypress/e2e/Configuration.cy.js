@@ -1,4 +1,4 @@
-import { config } from "../../PageObject/ConfigurationPom.cy";
+import { config } from "../PageObject/ConfigurationPom.cy";
 
 const cfg = new config
 const partnerUrl = 'https://mts-bol-dev.inconstruction.website/setting/configurations/partner'
@@ -44,7 +44,7 @@ describe('Configuration & Partner Test', () => {
         
     });
 
-    it.only('(Config) Create', () => {
+    it('(Config) Create', () => {
         const username = 'Mr.Cypress'
         const button = 'Cancel'
         const pwd = '123456789'
@@ -58,7 +58,7 @@ describe('Configuration & Partner Test', () => {
         cfg.passwordGen(pwd)
         cfg.eyeIcon();
         cfg.selectPartner(partner)
-        cfg.selectStatus(user_status)
+        cfg.selectUserStatus(user_status)
         cfg.writeDetails(detail)
         cfg.checkbox()
         cfg.clickSaveOrCancelBtn(button, username)
